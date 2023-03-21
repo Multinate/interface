@@ -1,6 +1,7 @@
 import {
   CampaignDetailViewContainer,
   CampaignDetailViewContent,
+  CampaignDetailViewDescription,
   CampaignDetailViewProgressBar,
   CampaignDetailViewTitle,
 } from './style'
@@ -43,6 +44,9 @@ const CampaignDetailView: FC<IProps> = ({ id }) => {
           <ProgressBar currentValue={campaignData?.raised || 0} maxValue={campaignData?.target || 0} />
         )}
       </CampaignDetailViewProgressBar>
+      <CampaignDetailViewDescription>
+        {loading ? <Skeleton count={10} /> : campaignData?.description}
+      </CampaignDetailViewDescription>
     </CampaignDetailViewContainer>
   )
 }
