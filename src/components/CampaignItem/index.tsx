@@ -1,5 +1,6 @@
 import { ICampaign } from '@/utils/interfaces'
 import { FC } from 'react'
+import CountUp from 'react-countup'
 import {
   CampaignItemContainer,
   CampaignItemDescription,
@@ -23,7 +24,9 @@ const CampaignItem: FC<IProps> = ({ campaign }) => {
         </CampaignItemDescription>
       </CampaignItemSection>
       <CampaignItemSection width={20} style={{ marginLeft: '20px', alignItems: 'flex-end' }}>
-        <CampaignItemPercentage>{campaign.raised}%</CampaignItemPercentage>
+        <CampaignItemPercentage>
+          <CountUp start={0} end={Number(campaign.raised)} decimals={0} duration={2} />%
+        </CampaignItemPercentage>
         <CampaignItemPercentageText>raised!</CampaignItemPercentageText>
       </CampaignItemSection>
     </CampaignItemContainer>
