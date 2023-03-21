@@ -5,6 +5,10 @@ const nextConfig = {
     styledComponents: true,
   },
   output: 'export',
+  images: {
+    loader: 'imgix',
+    path: '/',
+  },
 }
 
 module.exports = nextConfig
