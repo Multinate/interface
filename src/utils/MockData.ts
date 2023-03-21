@@ -7,7 +7,8 @@ export const MockCampaignData: ICampaign[] = [
     description:
       "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the...",
     href: '1',
-    raised: '69',
+    raised: 69,
+    target: 100,
   },
   {
     id: '2',
@@ -15,7 +16,8 @@ export const MockCampaignData: ICampaign[] = [
     description:
       "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the...",
     href: '2',
-    raised: '10',
+    raised: 10023,
+    target: 123123,
   },
   {
     id: '3',
@@ -23,7 +25,8 @@ export const MockCampaignData: ICampaign[] = [
     description:
       "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the...",
     href: '3',
-    raised: '20',
+    raised: 645,
+    target: 34342,
   },
   {
     id: '4',
@@ -31,7 +34,8 @@ export const MockCampaignData: ICampaign[] = [
     description:
       "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the...",
     href: '4',
-    raised: '200',
+    raised: 10023,
+    target: 5000,
   },
   {
     id: '5',
@@ -39,7 +43,8 @@ export const MockCampaignData: ICampaign[] = [
     description:
       "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the...",
     href: '5',
-    raised: '5',
+    raised: 32434,
+    target: 232322,
   },
   {
     id: '6',
@@ -47,7 +52,8 @@ export const MockCampaignData: ICampaign[] = [
     description:
       "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the...",
     href: '6',
-    raised: '0',
+    raised: 0,
+    target: 123123,
   },
   {
     id: '7',
@@ -55,6 +61,7 @@ export const MockCampaignData: ICampaign[] = [
     description:
       "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the...",
     href: '7',
-    raised: '59',
+    raised: 10023,
+    target: 12000,
   },
 ]

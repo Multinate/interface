@@ -1,8 +1,14 @@
-import { CampaignDetailViewContainer, CampaignDetailViewContent, CampaignDetailViewTitle } from './style'
+import {
+  CampaignDetailViewContainer,
+  CampaignDetailViewContent,
+  CampaignDetailViewProgressBar,
+  CampaignDetailViewTitle,
+} from './style'
 import { MockCampaignData } from '@/utils/MockData'
 import { FC, useEffect, useState } from 'react'
 import { ICampaign } from '@/utils/interfaces'
 import Skeleton from 'react-loading-skeleton'
+import ProgressBar from '@/components/ProgressBar'
 
 interface IProps {
   id: string
@@ -25,11 +31,18 @@ const CampaignDetailView: FC<IProps> = ({ id }) => {
     if (id) {
       fetchCampaign(id)
     }
-  }, [])
+  }, [id])
 
   return (
     <CampaignDetailViewContainer>
       <CampaignDetailViewTitle>{loading ? <Skeleton /> : campaignData?.title}</CampaignDetailViewTitle>
+      <CampaignDetailViewProgressBar>
+        {loading ? (
+          <Skeleton count={2} />
+        ) : (
+          <ProgressBar currentValue={campaignData?.raised || 0} maxValue={campaignData?.target || 0} />
+        )}
+      </CampaignDetailViewProgressBar>
     </CampaignDetailViewContainer>
   )
 }

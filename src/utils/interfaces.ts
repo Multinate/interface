@@ -9,5 +9,6 @@ export interface ICampaign {
   title: string
   description: string
   href: string
-  raised: string
+  raised: number
+  target: number
 }

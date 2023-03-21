@@ -33,7 +33,7 @@ const CampaignItem: FC<IProps> = ({ campaign }) => {
       </CampaignItemSection>
       <CampaignItemSection width={20} style={{ marginLeft: '20px', alignItems: 'flex-end' }}>
         <CampaignItemPercentage>
-          <CountUp start={0} end={Number(campaign.raised)} decimals={0} duration={2} />%
+          <CountUp start={0} end={Math.floor((campaign.raised / campaign.target) * 100)} decimals={0} duration={2} />%
         </CampaignItemPercentage>
         <CampaignItemPercentageText>raised!</CampaignItemPercentageText>
       </CampaignItemSection>

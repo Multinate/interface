@@ -46,3 +46,9 @@ export const CampaignDetailViewContent = styled.div`
     scrollbar-width: none; /* Firefox */
   }
 `
+
+export const CampaignDetailViewProgressBar = styled.div`
+  position: relative;
+  width: 100%;
+  height: 48px;
+`
