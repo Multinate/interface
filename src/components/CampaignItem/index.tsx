@@ -1,4 +1,6 @@
 import { ICampaign } from '@/utils/interfaces'
+import Link from 'next/link'
+import { useRouter } from 'next/router'
 import { FC } from 'react'
 import CountUp from 'react-countup'
 import {
@@ -15,8 +17,14 @@ interface IProps {
 }
 
 const CampaignItem: FC<IProps> = ({ campaign }) => {
+  const router = useRouter()
+
+  const handleGoToCampaignDetails = () => {
+    router.push(`/campaigns/${campaign.href}`)
+  }
+
   return (
-    <CampaignItemContainer>
+    <CampaignItemContainer onClick={handleGoToCampaignDetails}>
       <CampaignItemSection width={80}>
         <CampaignItemTitle>{campaign.title}</CampaignItemTitle>
         <CampaignItemDescription>
