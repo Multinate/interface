@@ -14,7 +14,7 @@ const LayoutContent = styled.div`
   position: relative;
   width: calc(100vw - 350px);
   min-height: 100vh;
-  padding: 20px;
+  padding: 40px;
 
   background: ${theme.colors.backgroundOne};
 `
