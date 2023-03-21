@@ -1,33 +1,40 @@
-import Image from "next/image";
-import { NavigationContainer, NavigationIcon, NavigationOptionIcon, NavigationOptions, NavigationSection, NavigationOption } from "./style"
-import { ConnectButton } from '@rainbow-me/rainbowkit';
-import MultiNateIcon from '@/assets/images/MultiNateIcon.svg';
-import Routes from "@/utils/Routes";
-import Link from "next/link";
-import { useRouter } from 'next/router';
+import Image from 'next/image'
+import {
+  NavigationContainer,
+  NavigationIcon,
+  NavigationOptionIcon,
+  NavigationOptions,
+  NavigationSection,
+  NavigationOption,
+} from './style'
+import { ConnectButton } from '@rainbow-me/rainbowkit'
+import MultiNateIcon from '@/assets/images/MultiNateIcon.svg'
+import Routes from '@/utils/Routes'
+import Link from 'next/link'
+import { useRouter } from 'next/router'
 
 const Navigation = () => {
-  const router = useRouter();
+  const router = useRouter()
 
   return (
     <NavigationContainer>
       <NavigationSection>
-        <NavigationIcon>
-          <Image src={MultiNateIcon} alt="MultiNate Icon" fill/>
-        </NavigationIcon>
+        <Link href={'/'}>
+          <NavigationIcon>
+            <Image src={MultiNateIcon} alt="MultiNate Icon" fill />
+          </NavigationIcon>
+        </Link>
         <NavigationOptions>
-          { Routes.map((route) => 
+          {Routes.map((route) => (
             <Link key={route.title} href={route.href}>
               <NavigationOption selected={router.pathname.includes(route.href)}>
                 <NavigationOptionIcon>
-                  <Image src={route.icon} alt={route.title} fill/>
+                  <Image src={route.icon} alt={route.title} fill />
                 </NavigationOptionIcon>
-                <p>
-                  {route.title}
-                </p>
+                <p>{route.title}</p>
               </NavigationOption>
             </Link>
-          )}
+          ))}
         </NavigationOptions>
       </NavigationSection>
       <NavigationSection>
