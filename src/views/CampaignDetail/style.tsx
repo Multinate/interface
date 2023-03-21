@@ -69,3 +69,14 @@ export const CampaignDetailViewDescription = styled.p`
 
   margin: 10px 0;
 `
+
+export const CampaignDetailViewForm = styled.div`
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+
+  margin: 10px 0;
+`

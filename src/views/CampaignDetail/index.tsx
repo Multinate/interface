@@ -1,7 +1,7 @@
 import {
   CampaignDetailViewContainer,
-  CampaignDetailViewContent,
   CampaignDetailViewDescription,
+  CampaignDetailViewForm,
   CampaignDetailViewProgressBar,
   CampaignDetailViewTitle,
 } from './style'
@@ -10,6 +10,7 @@ import { FC, useEffect, useState } from 'react'
 import { ICampaign } from '@/utils/interfaces'
 import Skeleton from 'react-loading-skeleton'
 import ProgressBar from '@/components/ProgressBar'
+import TextField from '@/components/TextField'
 
 interface IProps {
   id: string
@@ -47,6 +48,14 @@ const CampaignDetailView: FC<IProps> = ({ id }) => {
       <CampaignDetailViewDescription>
         {loading ? <Skeleton count={10} /> : campaignData?.description}
       </CampaignDetailViewDescription>
+      <CampaignDetailViewForm>
+        {!loading && (
+          <>
+            <TextField label={'Amount'}></TextField>
+            <TextField label={'Amount'}></TextField>
+          </>
+        )}
+      </CampaignDetailViewForm>
     </CampaignDetailViewContainer>
   )
 }
