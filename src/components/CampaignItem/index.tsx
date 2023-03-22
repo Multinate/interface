@@ -24,7 +24,7 @@ const CampaignItem: FC<IProps> = ({ campaign }) => {
   }
 
   return (
-    <CampaignItemContainer onClick={handleGoToCampaignDetails}>
+    <CampaignItemContainer clickable onClick={handleGoToCampaignDetails}>
       <CampaignItemSection width={80}>
         <CampaignItemTitle>{campaign.title}</CampaignItemTitle>
         <CampaignItemDescription>

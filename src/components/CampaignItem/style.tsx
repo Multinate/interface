@@ -1,7 +1,7 @@
 import theme from '@/styles/theme'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
-export const CampaignItemContainer = styled.div`
+export const CampaignItemContainer = styled.div<{ clickable?: boolean }>`
   position: relative;
   width: 100%;
   display: flex;
@@ -25,14 +25,18 @@ export const CampaignItemContainer = styled.div`
     margin-bottom: 0;
   }
 
-  transition-duration: 0.3s;
-  cursor: pointer;
+  ${({ clickable }) =>
+    clickable
+      ? css`
+          transition-duration: 0.3s;
+          cursor: pointer;
 
-  &:hover {
-    box-shadow: 0px 5px 7px rgba(0, 0, 0, 0.25);
-    transition-duration: 0.3s;
-    // transform: scale(1.01);
-  }
+          &:hover {
+            box-shadow: 0px 5px 7px rgba(0, 0, 0, 0.25);
+            transition-duration: 0.3s;
+          }
+        `
+      : ``}
 `
 
 export const CampaignItemSection = styled.div<{ width: number }>`
