@@ -1,4 +1,4 @@
-import { ICampaign } from './interfaces'
+import { ICampaign, ITransaction } from './interfaces'
 
 export const MockCampaignData: ICampaign[] = [
   {
@@ -63,5 +63,48 @@ export const MockCampaignData: ICampaign[] = [
     href: '7',
     raised: 10023,
     target: 12000,
+  },
+]
+
+export const MockTransactionsData: ITransaction[] = [
+  {
+    id: 'Transaction1',
+    campaignId: '1',
+    title: 'Mock Campaign 1',
+    timestamp: 17230894032,
+    amount: 10,
+    coinType: 'ETH',
+  },
+  {
+    id: 'Transaction2',
+    campaignId: '2',
+    title: 'Mock Campaign 2',
+    timestamp: 17230894032,
+    amount: 10,
+    coinType: 'ETH',
+  },
+  {
+    id: 'Transaction3',
+    campaignId: '3',
+    title: 'Mock Campaign 3',
+    timestamp: 17230894032,
+    amount: 10,
+    coinType: 'ETH',
+  },
+  {
+    id: 'Transaction4',
+    campaignId: '4',
+    title: 'Mock Campaign 4',
+    timestamp: 17230894032,
+    amount: 10,
+    coinType: 'ETH',
+  },
+  {
+    id: 'Transaction5',
+    campaignId: '5',
+    title: 'Mock Campaign 5',
+    timestamp: 17230894032,
+    amount: 10,
+    coinType: 'ETH',
   },
 ]

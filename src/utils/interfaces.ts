@@ -12,3 +12,12 @@ export interface ICampaign {
   raised: number
   target: number
 }
+
+export interface ITransaction {
+  id: string
+  campaignId: string
+  title: string
+  timestamp: number
+  amount: number
+  coinType: string
+}
