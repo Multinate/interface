@@ -1,7 +1,7 @@
-import theme from "@/styles/theme";
-import styled from "styled-components";
-import Meta from "./Meta";
-import Navigation from "./Navigation";
+import theme from '@/styles/theme'
+import styled from 'styled-components'
+import Meta from './Meta'
+import Navigation from './Navigation'
 
 const LayoutContainer = styled.div`
   position: relative;
@@ -12,7 +12,7 @@ const LayoutContainer = styled.div`
 
 const LayoutContent = styled.div`
   position: relative;
-  width: calc(100vw - 350px);
+  width: calc(100vw - 252px);
   min-height: 100vh;
   padding: 40px;
 
@@ -22,16 +22,13 @@ const LayoutContent = styled.div`
 const Layout = ({ children }: { children: any }) => {
   return (
     <>
-      <Meta/>
+      <Meta />
       <LayoutContainer>
-      <Navigation />
-      <LayoutContent>
-        {children}
-      </LayoutContent>
-    </LayoutContainer>
+        <Navigation />
+        <LayoutContent>{children}</LayoutContent>
+      </LayoutContainer>
     </>
-   
-  );
-};
+  )
+}
 
-export default Layout;
+export default Layout

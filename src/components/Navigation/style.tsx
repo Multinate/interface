@@ -4,7 +4,7 @@ import theme from '@/styles/theme'
 export const NavigationContainer = styled.div`
   position: relative;
   height: 100vh;
-  width: 350px;
+  width: 252px;
 
   padding: 20px;
 
@@ -60,7 +60,7 @@ export const NavigationOption = styled.div<{ selected: boolean }>`
 
   & p {
     font-family: ${theme.typography.base};
-    font-size: 24px;
+    font-size: 18px;
     color: ${theme.colors.text};
     font-weight: ${({ selected }) => (selected ? '600' : '400')};
   }

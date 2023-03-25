@@ -38,7 +38,7 @@ const Navigation = () => {
         </NavigationOptions>
       </NavigationSection>
       <NavigationSection>
-        <ConnectButton chainStatus="icon" />
+        <ConnectButton chainStatus="icon" accountStatus="address" showBalance={false} />
       </NavigationSection>
     </NavigationContainer>
   )
