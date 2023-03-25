@@ -28,3 +28,18 @@ export interface IOption {
   label: string
   value: string
 }
+
+export interface IPendingProposal {
+  id: string
+  title: string
+  description: string
+  choices: { [key: number]: string }
+  startTime: number
+  endTime: number
+  author: string
+  vote: number
+  yes: number
+  no: number
+  amount: number
+  userVoted: boolean
+}

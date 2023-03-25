@@ -11,7 +11,7 @@ const useVoteProposal = () => {
   const { client } = useInitSnapshot()
   const { provider: web3Provider } = useWeb3Provider()
 
-  const createProposal = async (proposalId: string, option: number) => {
+  const voteProposal = async (proposalId: string, option: number) => {
     setLoading(true)
 
     try {
@@ -34,7 +34,7 @@ const useVoteProposal = () => {
     setLoading(false)
   }
 
-  return { data, loading, createProposal }
+  return { data, loading, voteProposal }
 }
 
 export default useVoteProposal

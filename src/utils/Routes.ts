@@ -26,7 +26,8 @@ const Routes: IRoute[] = [
   },
   {
     title: 'Vote',
-    href: 'https://demo.snapshot.org/#/multinate.eth',
+    // href: 'https://demo.snapshot.org/#/multinate.eth',
+    href: '/vote',
     reqWalletConnected: true,
     icon: VoteIcon,
   },
