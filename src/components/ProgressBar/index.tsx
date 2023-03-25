@@ -8,10 +8,6 @@ interface IProps {
 }
 
 const ProgressBar: FC<IProps> = ({ currentValue, maxValue }) => {
-  console.log(currentValue)
-  console.log(maxValue)
-  console.log((currentValue / maxValue) * 100)
-
   return (
     <ProgressBarContainer>
       <ProgressBarBase>

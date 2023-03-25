@@ -5,12 +5,7 @@ const getTime = (timestamp: number) => {
   const hours = Math.floor((timestamp % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
   const minutes = Math.floor((timestamp % (1000 * 60 * 60)) / (1000 * 60))
   const seconds = Math.floor((timestamp % (1000 * 60)) / 1000)
-  console.log({
-    days,
-    hours,
-    minutes,
-    seconds,
-  })
+
   return [days, hours, minutes, seconds]
 }
 
@@ -26,12 +21,6 @@ export const getTimeFormat = (timestamp: number, from?: 'past' | 'future' | 'pre
       : from === 'future'
       ? getTime(_timestamp * 1000 - new Date().getTime())
       : getTime(_timestamp * 1000)
-  console.log({
-    _day,
-    _hours,
-    _minutes,
-    _seconds,
-  })
 
   if (_day > 0) {
     return `${_day} day${_day > 2 ? `s` : ``}`
