@@ -1,3 +1,4 @@
+import { getTimeFormat } from '@/utils/helper'
 import { ITransaction } from '@/utils/interfaces'
 import { useRouter } from 'next/router'
 import { FC } from 'react'
@@ -30,7 +31,7 @@ const TransactionItem: FC<IProps> = ({ transaction }) => {
       </TransactionItemData>
 
       <TransactionItemData style={{ width: '25%', alignItems: 'flex-end' }}>
-        <p>{transaction.timestamp}</p>
+        <p>{getTimeFormat(transaction.timestamp, 'past')} ago</p>
         <label>Time</label>
       </TransactionItemData>
     </TransactionItemContainer>
