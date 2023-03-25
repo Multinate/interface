@@ -15,7 +15,7 @@ export const DropdownFieldContainer = styled.div`
   }
 `
 
-export const DropdownFieldLabel = styled.label`
+export const DropdownFieldLabel = styled.label<{ show: boolean }>`
   position: absolute;
   font-family: ${theme.typography.base};
   background-color: ${theme.colors.backgroundOne};
@@ -23,7 +23,7 @@ export const DropdownFieldLabel = styled.label`
 
   top: -8px;
   left: 12px;
-  color: ${theme.colors.text};
+  color: ${({ show }) => (show ? theme.colors.title : theme.colors.text)};
   font-size: 12px;
   font-weight: 500;
   z-index: 10;
@@ -40,16 +40,20 @@ export const DropdownFieldInputContainer = styled.div<{ show: boolean }>`
   padding: 13px 0;
   margin: 0 auto;
 
-  border: solid 1px ${theme.colors.text};
   border-radius: 5px;
 
   background-color: ${theme.colors.backgroundOne};
 
   height: ${({ show }) => (show ? `400px;` : `48px;`)};
 
-  &:focus {
-    border: solid 2px ${theme.colors.title};
-  }
+  ${({ show }) =>
+    show
+      ? css`
+          border: solid 1px ${theme.colors.title};
+        `
+      : css`
+          border: solid 1px ${theme.colors.text};
+        `}
 `
 export const DropdownFieldInput = styled.div<{ show: boolean }>`
   position: relative;
@@ -125,6 +129,14 @@ export const DropdownFieldOption = styled.div`
   @media screen and (min-width: ${theme.breakpoints.medium}) {
     & p {
       margin-left: 20px;
+    }
+
+    &:hover {
+      background-color: ${theme.colors.title};
+
+      & p {
+        color: ${theme.colors.highlightTwo};
+      }
     }
   }
 `

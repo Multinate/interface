@@ -24,7 +24,7 @@ const DropdownField: FC<IProps> = ({ label, options, activeSelection, handleSele
   return (
     <DropdownFieldContainer ref={outerRef}>
       <DropdownFieldInputContainer show={showOptions}>
-        <DropdownFieldLabel>{label}</DropdownFieldLabel>
+        <DropdownFieldLabel show={showOptions}>{label}</DropdownFieldLabel>
         <DropdownFieldInput show={showOptions} onClick={() => setShowOptions(!showOptions)}>
           <p>{activeSelection.label}</p>
           <span>
