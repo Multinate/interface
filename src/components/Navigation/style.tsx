@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import theme from "@/styles/theme";
+import styled from 'styled-components'
+import theme from '@/styles/theme'
 
 export const NavigationContainer = styled.div`
   position: relative;
@@ -19,13 +19,12 @@ export const NavigationContainer = styled.div`
 export const NavigationSection = styled.div`
   position: relative;
   width: 100%;
-
 `
 
 export const NavigationIcon = styled.div`
   position: relative;
   height: 50px;
-  width: 240px;
+  width: 202px;
 `
 
 export const NavigationOptions = styled.div`
@@ -47,9 +46,9 @@ export const NavigationOption = styled.div<{ selected: boolean }>`
 
   cursor: pointer;
 
-  background-color: ${({ selected }) => selected ? theme.colors.backgroundOne : 'transparent' };
+  background-color: ${({ selected }) => (selected ? theme.colors.backgroundOne : 'transparent')};
   border-radius: 10px;
-  
+
   &:hover {
     background-color: ${theme.colors.backgroundOne};
 
@@ -63,7 +62,7 @@ export const NavigationOption = styled.div<{ selected: boolean }>`
     font-family: ${theme.typography.base};
     font-size: 24px;
     color: ${theme.colors.text};
-    font-weight: ${({ selected }) => selected ? '600' : '400' };
+    font-weight: ${({ selected }) => (selected ? '600' : '400')};
   }
 `
 
