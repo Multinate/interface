@@ -1,4 +1,5 @@
 import VoteProposalItem from '@/components/VoteProposalItem'
+import VoteProposalItemLoader from '@/components/VoteProposalItem/loader'
 import useFetchProposals from '@/hooks/useFetchPendingProposals'
 import { VoteViewContainer, VoteViewContent, VoteViewTitle } from './style'
 
@@ -12,8 +13,7 @@ const VoteView = () => {
         {loading ? (
           <>
             {new Array(5).fill(0).map((item, index: number) => (
-              // <CampaignItemLoader key={`CampaignItemLoader_${index}`} />
-              <></>
+              <VoteProposalItemLoader key={`VoteProposalItemLoader_${index}`} />
             ))}
           </>
         ) : (

@@ -1,34 +1,25 @@
 import Skeleton from 'react-loading-skeleton'
 import {
-  CampaignItemContainer,
-  CampaignItemDescription,
-  CampaignItemPercentage,
-  CampaignItemPercentageText,
-  CampaignItemSection,
-  CampaignItemTitle,
+  VoteProposalItemContainer,
+  VoteProposalItemDescription,
+  VoteProposalItemSection,
+  VoteProposalItemTitle,
 } from './style'
 
-const CampaignItemLoader = () => {
+const VoteProposalItemLoader = () => {
   return (
-    <CampaignItemContainer>
-      <CampaignItemSection width={80}>
-        <CampaignItemTitle style={{ width: '100%' }}>
+    <VoteProposalItemContainer>
+      <VoteProposalItemSection width={70}>
+        <VoteProposalItemTitle style={{ width: '100%' }}>
           <Skeleton />
-        </CampaignItemTitle>
-        <CampaignItemDescription style={{ width: '100%' }}>
-          <Skeleton count={3} />
-        </CampaignItemDescription>
-      </CampaignItemSection>
-      <CampaignItemSection width={20} style={{ marginLeft: '20px', alignItems: 'flex-end' }}>
-        <CampaignItemPercentage style={{ width: '100%' }}>
-          <Skeleton />
-        </CampaignItemPercentage>
-        <CampaignItemPercentageText style={{ width: '100%' }}>
-          <Skeleton />
-        </CampaignItemPercentageText>
-      </CampaignItemSection>
-    </CampaignItemContainer>
+        </VoteProposalItemTitle>
+        <VoteProposalItemDescription style={{ width: '100%' }}>
+          <Skeleton count={2} />
+        </VoteProposalItemDescription>
+      </VoteProposalItemSection>
+      <VoteProposalItemSection width={30}></VoteProposalItemSection>
+    </VoteProposalItemContainer>
   )
 }
 
-export default CampaignItemLoader
+export default VoteProposalItemLoader
