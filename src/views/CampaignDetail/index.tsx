@@ -62,7 +62,7 @@ const CampaignDetailView: FC<IProps> = ({ id }) => {
         <CampaignDetailViewForm>
           {!loading && (
             <>
-              <TextField label={'Amount'} type="number"></TextField>
+              <TextField label={'Amount'} type="number" handleChange={() => {}}></TextField>
               <DropdownField
                 label={'Coin'}
                 options={MockCoinSelection}
