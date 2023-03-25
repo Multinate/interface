@@ -19,7 +19,7 @@ const TransactionItemLoader: FC = () => {
         <label>Amount</label>
       </TransactionItemData>
 
-      <TransactionItemData style={{ width: '25%' }}>
+      <TransactionItemData style={{ width: '25%', alignItems: 'flex-end' }}>
         <p style={{ width: '80%' }}>
           <Skeleton />
         </p>
