@@ -19,7 +19,8 @@ const Routes: IRoute[] = [
   },
   {
     title: 'Create',
-    href: 'https://demo.snapshot.org/#/multinate.eth/create/0',
+    // href: 'https://demo.snapshot.org/#/multinate.eth/create/0',
+    href: '/create',
     reqWalletConnected: true,
     icon: CreateIcon,
   },
