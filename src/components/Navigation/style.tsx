@@ -78,7 +78,7 @@ export const NavigationMobileBurgerContainer = styled.div`
   position: absolute;
   top: 20px;
   right: 20px;
-  z-index: 3;
+  z-index: 12;
 `
 
 export const NavigationMobileBurger = styled.div<{ open: boolean }>`
@@ -130,7 +130,7 @@ export const NavigationMobileBurger = styled.div<{ open: boolean }>`
 
 export const NavigationMobileContainer = styled.div<{ open: boolean }>`
   position: absolute;
-  z-index: 2;
+  z-index: 11;
   height: 100vh;
   width: 100vw;
   top: ${({ open }) => (open ? '0' : '-100vh')};
