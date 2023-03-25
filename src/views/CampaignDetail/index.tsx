@@ -15,6 +15,7 @@ import ProgressBar from '@/components/ProgressBar'
 import TextField from '@/components/TextField'
 import DropdownField from '@/components/DropdownField'
 import TransactionModal from '@/components/TransactionModal'
+import Button from '@/components/Button'
 
 interface IProps {
   id: string
@@ -68,6 +69,7 @@ const CampaignDetailView: FC<IProps> = ({ id }) => {
                 activeSelection={selectedCoinOption}
                 handleSelection={handleSelectCoin}
               ></DropdownField>
+              <Button label={'Donate'} isLoading={false} handleClick={() => {}}></Button>
             </>
           )}
         </CampaignDetailViewForm>
