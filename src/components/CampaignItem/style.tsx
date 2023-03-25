@@ -54,28 +54,45 @@ export const CampaignItemTitle = styled.h3`
   font-family: ${theme.typography.base};
   font-weight: 600;
   color: ${theme.colors.title};
-  font-size: 24px;
+  font-size: 16px;
 
   margin-bottom: 10px;
+
+  @media screen and (min-width: ${theme.breakpoints.large}) {
+    font-size: 24px;
+  }
 `
 
 export const CampaignItemDescription = styled.p`
   font-family: ${theme.typography.base};
   font-weight: 400;
   color: ${theme.colors.text};
-  font-size: 18px;
+  font-size: 12px;
+
+  @media screen and (min-width: ${theme.breakpoints.large}) {
+    font-size: 18px;
+  }
 `
 
 export const CampaignItemPercentage = styled.p`
   font-family: ${theme.typography.base};
   font-weight: 600;
   color: ${theme.colors.text};
-  font-size: 48px;
+  font-size: 24px;
+
+  @media screen and (min-width: ${theme.breakpoints.large}) {
+    font-size: 48px;
+  }
 `
 
 export const CampaignItemPercentageText = styled.p`
   font-family: ${theme.typography.base};
   font-weight: 400;
   color: ${theme.colors.text};
-  font-size: 18px;
+
+  font-size: 14px;
+
+  @media screen and (min-width: ${theme.breakpoints.large}) {
+    font-size: 18px;
+  }
 `

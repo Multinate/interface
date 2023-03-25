@@ -17,11 +17,15 @@ export const CampaignViewTitle = styled.h2`
   width: 100%;
   font-family: ${theme.typography.base};
   color: ${theme.colors.title};
-  font-size: 48px;
+  font-size: 24px;
 
   margin-bottom: 20px;
 
   text-align: left;
+
+  @media screen and (min-width: ${theme.breakpoints.large}) {
+    font-size: 48px;
+  }
 `
 
 export const CampaignViewContent = styled.div`

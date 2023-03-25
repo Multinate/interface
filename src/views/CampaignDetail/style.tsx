@@ -18,11 +18,15 @@ export const CampaignDetailViewTitle = styled.h2`
   width: 100%;
   font-family: ${theme.typography.base};
   color: ${theme.colors.title};
-  font-size: 48px;
+  font-size: 24px;
 
   margin-bottom: 10px;
 
   text-align: left;
+
+  @media screen and (min-width: ${theme.breakpoints.large}) {
+    font-size: 48px;
+  }
 `
 
 export const CampaignDetailViewContent = styled.div`
@@ -62,12 +66,17 @@ export const CampaignDetailViewDescription = styled.p`
 
   font-family: ${theme.typography.base};
   font-weight: 400;
-  font-size: 18px;
+  font-size: 14px;
   color: ${theme.colors.text};
 
   text-align: left;
 
-  margin: 10px 0;
+  margin: 5px 0;
+
+  @media screen and (min-width: ${theme.breakpoints.large}) {
+    font-size: 18px;
+    margin: 10px 0;
+  }
 `
 
 export const CampaignDetailViewForm = styled.div`

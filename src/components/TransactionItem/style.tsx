@@ -48,21 +48,37 @@ export const TransactionItemData = styled.div`
   & p {
     font-family: ${theme.typography.base};
     font-weight: 700;
-    font-size: 18px;
+    font-size: 14px;
     color: ${theme.colors.text};
   }
 
   & label {
     font-family: ${theme.typography.base};
     font-weight: 300;
-    font-size: 12px;
+    font-size: 8px;
     color: ${theme.colors.text};
+  }
+
+  @media screen and (min-width: ${theme.breakpoints.large}) {
+    & p {
+      font-size: 18px;
+    }
+
+    & label {
+      font-size: 12px;
+    }
   }
 `
 
 export const TransactionItemDataTitle = styled.p`
   font-family: ${theme.typography.base};
   font-weight: 700;
-  font-size: 18px;
+  font-size: 14px;
   color: ${theme.colors.title} !important;
+
+  @media screen and (min-width: ${theme.breakpoints.large}) {
+    & p {
+      font-size: 18px;
+    }
+  }
 `

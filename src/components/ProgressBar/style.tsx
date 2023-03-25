@@ -20,7 +20,11 @@ export const ProgressBarBase = styled.div`
   background-color: ${theme.colors.backgroundTwo};
   border-radius: 15px;
 
-  margin-bottom: 10px;
+  margin-bottom: 5px;
+
+  @media screen and (min-width: ${theme.breakpoints.large}) {
+    margin-bottom: 10px;
+  }
 `
 
 export const ProgressBarFilled = styled.div<{ rightEndCurved: boolean; toWidth: number }>`
@@ -41,8 +45,12 @@ export const ProgressBarFilled = styled.div<{ rightEndCurved: boolean; toWidth: 
 export const ProgressBarText = styled.p`
   font-family: ${theme.typography.base};
   font-weight: 400;
-  font-size: 18px;
+  font-size: 14px;
   color: ${theme.colors.text};
+
+  @media screen and (min-width: ${theme.breakpoints.large}) {
+    font-size: 18px;
+  }
 `
 
 const grow = (isWidth: number) => keyframes`
