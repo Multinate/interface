@@ -4,7 +4,7 @@ import theme from '@/styles/theme'
 export const NavigationContainer = styled.div`
   position: relative;
   height: 100vh;
-  width: 252px;
+  width: 290px;
 
   padding: 20px;
 
