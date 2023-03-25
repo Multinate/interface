@@ -4,19 +4,19 @@ import 'react-loading-skeleton/dist/skeleton.css'
 
 import { getDefaultWallets, RainbowKitProvider } from '@rainbow-me/rainbowkit'
 import { configureChains, createClient, WagmiConfig } from 'wagmi'
-import { mainnet, polygon, optimism, arbitrum } from 'wagmi/chains'
+import { optimismGoerli, polygonMumbai, arbitrumGoerli, goerli } from 'wagmi/chains'
 import { alchemyProvider } from 'wagmi/providers/alchemy'
 import { publicProvider } from 'wagmi/providers/public'
 import Layout from '@/components/Layout'
 import GlobalStyle from '@/styles/GlobalStyles'
 
 const { chains, provider } = configureChains(
-  [mainnet, polygon, optimism, arbitrum],
+  [goerli, optimismGoerli, polygonMumbai, arbitrumGoerli],
   [alchemyProvider({ apiKey: process.env.ALCHEMY_ID || '' }), publicProvider()],
 )
 
 const { connectors } = getDefaultWallets({
-  appName: 'Web3 Donation Aggregator',
+  appName: 'MultiNate',
   chains,
 })
 
@@ -29,7 +29,7 @@ const wagmiClient = createClient({
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <WagmiConfig client={wagmiClient}>
-      <RainbowKitProvider chains={chains}>
+      <RainbowKitProvider chains={chains} initialChain={goerli}>
         <GlobalStyle />
         <Layout>
           <Component {...pageProps} />
