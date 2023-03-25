@@ -2,6 +2,7 @@ export interface IRoute {
   title: string
   href: string
   icon: string
+  reqWalletConnected: boolean
 }
 
 export interface ICampaign {
