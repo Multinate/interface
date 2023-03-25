@@ -9,6 +9,7 @@ import { alchemyProvider } from 'wagmi/providers/alchemy'
 import { publicProvider } from 'wagmi/providers/public'
 import Layout from '@/components/Layout'
 import GlobalStyle from '@/styles/GlobalStyles'
+import { Toaster } from 'react-hot-toast'
 
 const { chains, provider } = configureChains(
   [goerli, optimismGoerli, polygonMumbai, arbitrumGoerli],
@@ -29,9 +30,10 @@ const wagmiClient = createClient({
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <WagmiConfig client={wagmiClient}>
-      <RainbowKitProvider chains={chains} initialChain={goerli}>
+      <RainbowKitProvider chains={chains}>
         <GlobalStyle />
         <Layout>
+          <Toaster position="bottom-right" reverseOrder={false} />
           <Component {...pageProps} />
         </Layout>
       </RainbowKitProvider>
