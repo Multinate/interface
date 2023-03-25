@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import theme from '@/styles/theme'
 
 export const NavigationContainer = styled.div`
@@ -72,4 +72,75 @@ export const NavigationOptionIcon = styled.div`
   width: 24px;
 
   margin-right: 10px;
+`
+
+export const NavigationMobileBurgerContainer = styled.div`
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 3;
+`
+
+export const NavigationMobileBurger = styled.div<{ open: boolean }>`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: flex-end;
+
+  & i {
+    background-color: black;
+    width: 20px;
+    height: 2px;
+    margin: 2px;
+    border-radius: 2px;
+    transition: all ease 0.5s;
+
+    ${({ open }) =>
+      open
+        ? css`
+            padding-left: 25px;
+
+            &:nth-child(1) {
+              transform: rotate(45deg) translateY(8.5px);
+            }
+
+            &:nth-child(2) {
+              opacity: 0;
+            }
+
+            &:nth-child(3) {
+              transform: rotate(-45deg) translateY(-8.5px);
+            }
+          `
+        : css`
+            &:nth-child(1) {
+              transform: rotate(0) translateY(0);
+            }
+
+            &:nth-child(2) {
+              opacity: 1;
+            }
+
+            &:nth-child(3) {
+              transform: rotate(0) translateY(0);
+            }
+          `}
+  }
+`
+
+export const NavigationMobileContainer = styled.div<{ open: boolean }>`
+  position: absolute;
+  z-index: 2;
+  height: 100vh;
+  width: 100vw;
+  top: ${({ open }) => (open ? '0' : '-100vh')};
+  transition: all 0.5s ease;
+
+  background-color: ${theme.colors.backgroundOne};
+
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
 `
