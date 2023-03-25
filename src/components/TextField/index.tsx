@@ -3,9 +3,10 @@ import { TextFieldContainer, TextFieldInput, TextFieldLabel } from './style'
 
 interface IProps {
   label: string
+  type: string
 }
 
-const TextField: FC<IProps> = ({ label }) => {
+const TextField: FC<IProps> = ({ label, type }) => {
   const [text, setText] = useState<string>('')
   const [focus, setFocus] = useState<boolean>(false)
 
@@ -16,7 +17,7 @@ const TextField: FC<IProps> = ({ label }) => {
   return (
     <TextFieldContainer>
       <TextFieldInput
-        type="text"
+        type={type}
         value={text}
         onFocus={() => setFocus(true)}
         onBlur={() => setFocus(false)}
