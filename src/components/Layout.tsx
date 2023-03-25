@@ -8,11 +8,12 @@ const LayoutContainer = styled.div`
   display: flex;
   flex-direction: row;
   align-items: flex-start;
+  width: 100vw;
 `
 
 const LayoutContent = styled.div`
   position: relative;
-  width: calc(100vw - 252px);
+  width: 100%;
   min-height: 100vh;
   padding: 40px;
 
