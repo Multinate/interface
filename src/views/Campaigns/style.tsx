@@ -23,7 +23,7 @@ export const CampaignViewTitle = styled.h2`
 
   text-align: left;
 
-  @media screen and (min-width: ${theme.breakpoints.large}) {
+  @media screen and (min-width: ${theme.breakpoints.xlarge}) {
     font-size: 48px;
   }
 `

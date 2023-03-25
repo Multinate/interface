@@ -5,12 +5,12 @@ export const DropdownFieldContainer = styled.div`
   position: relative;
   z-index: 2;
   height: 48px;
-  width: 47.5%;
+  width: 200px;
   display: flex;
   flex-direction: column;
   cursor: pointer;
 
-  @media screen and (min-width: ${theme.breakpoints.large}) {
+  @media screen and (min-width: ${theme.breakpoints.xlarge}) {
     width: 200px;
   }
 `
@@ -81,7 +81,7 @@ export const DropdownFieldInput = styled.div<{ show: boolean }>`
     transform: ${({ show }) => (show ? `rotate(180deg)` : `none`)};
   }
 
-  @media screen and (min-width: ${theme.breakpoints.medium}) {
+  @media screen and (min-width: ${theme.breakpoints.xlarge}) {
     padding: 0 20px;
   }
 `
@@ -126,7 +126,7 @@ export const DropdownFieldOption = styled.div`
     margin-left: 10px;
   }
 
-  @media screen and (min-width: ${theme.breakpoints.medium}) {
+  @media screen and (min-width: ${theme.breakpoints.xlarge}) {
     & p {
       margin-left: 20px;
     }

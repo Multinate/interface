@@ -59,7 +59,7 @@ export const TransactionItemData = styled.div`
     color: ${theme.colors.text};
   }
 
-  @media screen and (min-width: ${theme.breakpoints.large}) {
+  @media screen and (min-width: ${theme.breakpoints.xlarge}) {
     & p {
       font-size: 18px;
     }
@@ -76,7 +76,7 @@ export const TransactionItemDataTitle = styled.p`
   font-size: 14px;
   color: ${theme.colors.title} !important;
 
-  @media screen and (min-width: ${theme.breakpoints.large}) {
+  @media screen and (min-width: ${theme.breakpoints.xlarge}) {
     & p {
       font-size: 18px;
     }

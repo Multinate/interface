@@ -22,7 +22,7 @@ export const ProgressBarBase = styled.div`
 
   margin-bottom: 5px;
 
-  @media screen and (min-width: ${theme.breakpoints.large}) {
+  @media screen and (min-width: ${theme.breakpoints.xlarge}) {
     margin-bottom: 10px;
   }
 `
@@ -48,7 +48,7 @@ export const ProgressBarText = styled.p`
   font-size: 14px;
   color: ${theme.colors.text};
 
-  @media screen and (min-width: ${theme.breakpoints.large}) {
+  @media screen and (min-width: ${theme.breakpoints.xlarge}) {
     font-size: 18px;
   }
 `

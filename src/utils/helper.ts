@@ -1,3 +1,5 @@
+import { ethers } from 'ethers'
+
 const getTime = (timestamp: number) => {
   if (timestamp < 0 || timestamp === Infinity) return [0, 0, 0, 0]
 
@@ -39,4 +41,17 @@ export const getTimeFormat = (timestamp: number, from?: 'past' | 'future' | 'pre
   }
 
   return `now`
+}
+
+export const getDisplayAddress = (address: string | null | undefined, size: number, isMobile: boolean): string => {
+  if (!address || address === `-`) {
+    return `-`
+  }
+  if (isMobile) {
+    return `${address.toString().slice(0, 3)}...`
+  }
+  if (ethers.utils.isAddress(address)) {
+    return `${address.toString().slice(0, size)}...${address.toString().slice(-size)}`
+  }
+  return address
 }

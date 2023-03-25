@@ -58,7 +58,7 @@ export const CampaignItemTitle = styled.h3`
 
   margin-bottom: 10px;
 
-  @media screen and (min-width: ${theme.breakpoints.large}) {
+  @media screen and (min-width: ${theme.breakpoints.xlarge}) {
     font-size: 24px;
   }
 `
@@ -69,7 +69,7 @@ export const CampaignItemDescription = styled.p`
   color: ${theme.colors.text};
   font-size: 12px;
 
-  @media screen and (min-width: ${theme.breakpoints.large}) {
+  @media screen and (min-width: ${theme.breakpoints.xlarge}) {
     font-size: 18px;
   }
 `
@@ -80,7 +80,7 @@ export const CampaignItemPercentage = styled.p`
   color: ${theme.colors.text};
   font-size: 24px;
 
-  @media screen and (min-width: ${theme.breakpoints.large}) {
+  @media screen and (min-width: ${theme.breakpoints.xlarge}) {
     font-size: 48px;
   }
 `
@@ -92,7 +92,7 @@ export const CampaignItemPercentageText = styled.p`
 
   font-size: 14px;
 
-  @media screen and (min-width: ${theme.breakpoints.large}) {
+  @media screen and (min-width: ${theme.breakpoints.xlarge}) {
     font-size: 18px;
   }
 `

@@ -19,7 +19,7 @@ const LayoutContent = styled.div`
 
   background: ${theme.colors.backgroundOne};
 
-  @media screen and (min-width: ${theme.breakpoints.large}) {
+  @media screen and (min-width: ${theme.breakpoints.xlarge}) {
     padding: 40px;
   }
 `

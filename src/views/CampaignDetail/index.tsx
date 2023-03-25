@@ -1,17 +1,20 @@
 import {
   CampaignDetailViewContainer,
+  CampaignDetailViewContent,
   CampaignDetailViewDescription,
   CampaignDetailViewForm,
   CampaignDetailViewProgressBar,
   CampaignDetailViewTitle,
+  CampaignDetailViewTransactionModal,
 } from './style'
-import { MockCampaignData, MockCoinSelection } from '@/utils/MockData'
+import { MockCampaignData, MockCoinSelection, MockTransactionsData } from '@/utils/MockData'
 import { FC, useEffect, useState } from 'react'
 import { ICampaign, IOption } from '@/utils/interfaces'
 import Skeleton from 'react-loading-skeleton'
 import ProgressBar from '@/components/ProgressBar'
 import TextField from '@/components/TextField'
 import DropdownField from '@/components/DropdownField'
+import TransactionModal from '@/components/TransactionModal'
 
 interface IProps {
   id: string
@@ -43,30 +46,36 @@ const CampaignDetailView: FC<IProps> = ({ id }) => {
 
   return (
     <CampaignDetailViewContainer>
-      <CampaignDetailViewTitle>{loading ? <Skeleton /> : campaignData?.title}</CampaignDetailViewTitle>
-      <CampaignDetailViewProgressBar>
-        {loading ? (
-          <Skeleton count={2} />
-        ) : (
-          <ProgressBar currentValue={campaignData?.raised || 0} maxValue={campaignData?.target || 0} />
-        )}
-      </CampaignDetailViewProgressBar>
-      <CampaignDetailViewDescription>
-        {loading ? <Skeleton count={10} /> : campaignData?.description}
-      </CampaignDetailViewDescription>
-      <CampaignDetailViewForm>
-        {!loading && (
-          <>
-            <TextField label={'Amount'}></TextField>
-            <DropdownField
-              label={'Coin'}
-              options={MockCoinSelection}
-              activeSelection={selectedCoinOption}
-              handleSelection={handleSelectCoin}
-            ></DropdownField>
-          </>
-        )}
-      </CampaignDetailViewForm>
+      <CampaignDetailViewContent>
+        <CampaignDetailViewTitle>{loading ? <Skeleton /> : campaignData?.title}</CampaignDetailViewTitle>
+        <CampaignDetailViewProgressBar>
+          {loading ? (
+            <Skeleton count={2} />
+          ) : (
+            <ProgressBar currentValue={campaignData?.raised || 0} maxValue={campaignData?.target || 0} />
+          )}
+        </CampaignDetailViewProgressBar>
+        <CampaignDetailViewDescription>
+          {loading ? <Skeleton count={10} /> : campaignData?.description}
+        </CampaignDetailViewDescription>
+        <CampaignDetailViewForm>
+          {!loading && (
+            <>
+              <TextField label={'Amount'}></TextField>
+              <DropdownField
+                label={'Coin'}
+                options={MockCoinSelection}
+                activeSelection={selectedCoinOption}
+                handleSelection={handleSelectCoin}
+              ></DropdownField>
+            </>
+          )}
+        </CampaignDetailViewForm>
+      </CampaignDetailViewContent>
+
+      <CampaignDetailViewTransactionModal>
+        <TransactionModal loading={loading} transactions={MockTransactionsData} />
+      </CampaignDetailViewTransactionModal>
     </CampaignDetailViewContainer>
   )
 }

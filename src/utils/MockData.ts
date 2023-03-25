@@ -74,6 +74,7 @@ export const MockTransactionsData: ITransaction[] = [
     timestamp: 1679604109,
     amount: 10,
     coinType: 'ETH',
+    donor: '0xc4c389857EA62FD8258b2C25eC0d7Bf33dcBda44',
   },
   {
     id: 'Transaction2',
@@ -82,6 +83,7 @@ export const MockTransactionsData: ITransaction[] = [
     timestamp: 1679604109,
     amount: 10,
     coinType: 'ETH',
+    donor: '0xc4c389857EA62FD8258b2C25eC0d7Bf33dcBda44',
   },
   {
     id: 'Transaction3',
@@ -90,6 +92,7 @@ export const MockTransactionsData: ITransaction[] = [
     timestamp: 1679604109,
     amount: 10,
     coinType: 'ETH',
+    donor: '0xc4c389857EA62FD8258b2C25eC0d7Bf33dcBda44',
   },
   {
     id: 'Transaction4',
@@ -98,6 +101,7 @@ export const MockTransactionsData: ITransaction[] = [
     timestamp: 1679604109,
     amount: 10,
     coinType: 'ETH',
+    donor: '0xc4c389857EA62FD8258b2C25eC0d7Bf33dcBda44',
   },
   {
     id: 'Transaction5',
@@ -106,6 +110,7 @@ export const MockTransactionsData: ITransaction[] = [
     timestamp: 1679604109,
     amount: 10,
     coinType: 'ETH',
+    donor: '0xc4c389857EA62FD8258b2C25eC0d7Bf33dcBda44',
   },
 ]
 

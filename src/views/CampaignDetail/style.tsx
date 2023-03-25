@@ -5,12 +5,22 @@ export const CampaignDetailViewContainer = styled.div`
   position: relative;
   height: 100%;
   width: 100%;
-  max-width: 800px;
 
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  align-items: flex-start;
+  justify-content: flex-start;
+`
+
+export const CampaignDetailViewContent = styled.div`
+  position: relative;
+  width: 100%;
+  max-width: 700px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
 `
 
 export const CampaignDetailViewTitle = styled.h2`
@@ -24,31 +34,8 @@ export const CampaignDetailViewTitle = styled.h2`
 
   text-align: left;
 
-  @media screen and (min-width: ${theme.breakpoints.large}) {
+  @media screen and (min-width: ${theme.breakpoints.xlarge}) {
     font-size: 48px;
-  }
-`
-
-export const CampaignDetailViewContent = styled.div`
-  position: relative;
-  width: 100%;
-  height: 80vh;
-
-  overflow-y: auto;
-
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: flex-start;
-
-  &::-webkit-scrollbar {
-    display: none;
-  }
-
-  /* Hide scrollbar for IE, Edge and Firefox */
-  & {
-    -ms-overflow-style: none; /* IE and Edge */
-    scrollbar-width: none; /* Firefox */
   }
 `
 
@@ -73,7 +60,7 @@ export const CampaignDetailViewDescription = styled.p`
 
   margin: 5px 0;
 
-  @media screen and (min-width: ${theme.breakpoints.large}) {
+  @media screen and (min-width: ${theme.breakpoints.xlarge}) {
     font-size: 18px;
     margin: 10px 0;
   }
@@ -88,4 +75,11 @@ export const CampaignDetailViewForm = styled.div`
   justify-content: flex-start;
 
   margin: 10px 0;
+`
+
+export const CampaignDetailViewTransactionModal = styled.div`
+  position: absolute;
+
+  top: 0;
+  right: 0;
 `

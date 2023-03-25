@@ -20,6 +20,7 @@ export interface ITransaction {
   timestamp: number
   amount: number
   coinType: string
+  donor: string
 }
 
 export interface IOption {
