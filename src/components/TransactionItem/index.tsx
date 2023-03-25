@@ -2,7 +2,7 @@ import { ITransaction } from '@/utils/interfaces'
 import { useRouter } from 'next/router'
 import { FC } from 'react'
 import CountUp from 'react-countup'
-import { TransactionItemContainer, TransactionItemData } from './style'
+import { TransactionItemContainer, TransactionItemData, TransactionItemDataTitle } from './style'
 
 interface IProps {
   transaction: ITransaction
@@ -18,7 +18,7 @@ const TransactionItem: FC<IProps> = ({ transaction }) => {
   return (
     <TransactionItemContainer clickable onClick={handleGoToCampaignDetails}>
       <TransactionItemData style={{ width: '50%' }}>
-        <p>{transaction.title}</p>
+        <TransactionItemDataTitle>{transaction.title}</TransactionItemDataTitle>
         <label>Name</label>
       </TransactionItemData>
 

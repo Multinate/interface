@@ -59,3 +59,10 @@ export const TransactionItemData = styled.div`
     color: ${theme.colors.text};
   }
 `
+
+export const TransactionItemDataTitle = styled.p`
+  font-family: ${theme.typography.base};
+  font-weight: 700;
+  font-size: 18px;
+  color: ${theme.colors.title} !important;
+`

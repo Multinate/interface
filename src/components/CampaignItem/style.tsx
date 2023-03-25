@@ -53,7 +53,7 @@ export const CampaignItemSection = styled.div<{ width: number }>`
 export const CampaignItemTitle = styled.h3`
   font-family: ${theme.typography.base};
   font-weight: 600;
-  color: ${theme.colors.text};
+  color: ${theme.colors.title};
   font-size: 24px;
 
   margin-bottom: 10px;
