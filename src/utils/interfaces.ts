@@ -21,3 +21,8 @@ export interface ITransaction {
   amount: number
   coinType: string
 }
+
+export interface IOption {
+  label: string
+  value: string
+}

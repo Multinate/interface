@@ -5,12 +5,13 @@ import {
   CampaignDetailViewProgressBar,
   CampaignDetailViewTitle,
 } from './style'
-import { MockCampaignData } from '@/utils/MockData'
+import { MockCampaignData, MockCoinSelection } from '@/utils/MockData'
 import { FC, useEffect, useState } from 'react'
-import { ICampaign } from '@/utils/interfaces'
+import { ICampaign, IOption } from '@/utils/interfaces'
 import Skeleton from 'react-loading-skeleton'
 import ProgressBar from '@/components/ProgressBar'
 import TextField from '@/components/TextField'
+import DropdownField from '@/components/DropdownField'
 
 interface IProps {
   id: string
@@ -19,6 +20,11 @@ interface IProps {
 const CampaignDetailView: FC<IProps> = ({ id }) => {
   const [campaignData, setCampaignData] = useState<ICampaign>()
   const [loading, setLoading] = useState<boolean>(true)
+  const [selectedCoinOption, setSelectedCoinOption] = useState<IOption>(MockCoinSelection[0])
+
+  const handleSelectCoin = (selected: IOption) => {
+    setSelectedCoinOption(selected)
+  }
 
   const fetchCampaign = async (id: string) => {
     // Mock some loading and fetching
@@ -52,7 +58,12 @@ const CampaignDetailView: FC<IProps> = ({ id }) => {
         {!loading && (
           <>
             <TextField label={'Amount'}></TextField>
-            <TextField label={'Amount'}></TextField>
+            <DropdownField
+              label={'Coin'}
+              options={MockCoinSelection}
+              activeSelection={selectedCoinOption}
+              handleSelection={handleSelectCoin}
+            ></DropdownField>
           </>
         )}
       </CampaignDetailViewForm>
