@@ -10,6 +10,8 @@ export const DropdownFieldContainer = styled.div`
   flex-direction: column;
   cursor: pointer;
 
+  margin: 10px 0;
+
   @media screen and (min-width: ${theme.breakpoints.xlarge}) {
     width: 400px;
   }

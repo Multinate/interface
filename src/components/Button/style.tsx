@@ -8,6 +8,8 @@ export const ButtonContainer = styled.button`
   border-radius: 20px;
   border: none;
 
+  margin: 5px 0;
+
   & p {
     font-family: ${theme.typography.base};
     font-size: 18px;
