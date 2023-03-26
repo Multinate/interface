@@ -3,7 +3,12 @@ import TextField from '@/components/TextField'
 import useCreateProposal from '@/hooks/useCreateProposal'
 import { useEffect, useState } from 'react'
 import { toast } from 'react-hot-toast'
-import { CreateCampaignViewContainer, CreateCampaignViewContent, CreateCampaignViewTitle } from './style'
+import {
+  CreateCampaignViewContainer,
+  CreateCampaignViewContent,
+  CreateCampaignViewDescription,
+  CreateCampaignViewTitle,
+} from './style'
 
 const CreateCampaignView = () => {
   const [title, setTitle] = useState<string>('')
@@ -34,6 +39,10 @@ const CreateCampaignView = () => {
   return (
     <CreateCampaignViewContainer>
       <CreateCampaignViewTitle>Create Campaign</CreateCampaignViewTitle>
+      <CreateCampaignViewDescription>
+        Create a campaign for the community to vote. Once the voting has been passed and approved by the community, the
+        campaign will be available to receive donation from the community.
+      </CreateCampaignViewDescription>
       <CreateCampaignViewContent>
         <TextField label="Title" type="text" handleChange={(text) => setTitle(text)} />
         <TextField label="Description" type="textarea" handleChange={(text) => setDescription(text)} />

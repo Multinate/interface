@@ -6,6 +6,8 @@ export const CreateCampaignViewContainer = styled.div`
   height: 100%;
   width: 100%;
 
+  max-width: 750px;
+
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -28,6 +30,21 @@ export const CreateCampaignViewTitle = styled.h2`
   }
 `
 
+export const CreateCampaignViewDescription = styled.p`
+  position: relative;
+  width: 100%;
+  font-family: ${theme.typography.base};
+  color: ${theme.colors.text};
+  font-size: 14px;
+
+  margin-bottom: 20px;
+
+  text-align: left;
+
+  @media screen and (min-width: ${theme.breakpoints.xlarge}) {
+    font-size: 18px;
+  }
+`
 export const CreateCampaignViewContent = styled.div`
   position: relative;
   height: 100%;
