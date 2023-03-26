@@ -38,8 +38,13 @@ const VoteProposalDetailView: FC<IProps> = ({ id }) => {
           {loading ? <Skeleton count={10} /> : data?.description}
         </VoteProposalDetailViewDescription>
         <VoteProposalDetailViewDescription>
-          {loading ? <Skeleton /> : <VoteProposalDetailViewSubtitle>Target Amount:</VoteProposalDetailViewSubtitle>}{' '}
-          {data?.amount}
+          {loading ? (
+            <Skeleton />
+          ) : (
+            <>
+              <VoteProposalDetailViewSubtitle>Target Amount:</VoteProposalDetailViewSubtitle> {data?.amount}
+            </>
+          )}
         </VoteProposalDetailViewDescription>
 
         <VoteProposalDetailViewDescription>
@@ -52,27 +57,33 @@ const VoteProposalDetailView: FC<IProps> = ({ id }) => {
             </>
           )}
         </VoteProposalDetailViewDescription>
-        {data?.userVoted ? (
-          <VoteProposalDetailViewSubtitle>You have voted</VoteProposalDetailViewSubtitle>
+        {loading ? (
+          <Skeleton />
         ) : (
           <>
-            <VoteProposalDetailViewSubtitle>Voting Options</VoteProposalDetailViewSubtitle>
-            <VoteProposalDetailViewForm>
-              {votingProposal ? (
-                <Button isLoading={true} key={0} label="Processing..." handleClick={() => {}} />
-              ) : (
-                <>
-                  {Object.entries(data?.choices || {}).map((entry) => (
-                    <Button
-                      isLoading={false}
-                      key={entry[1]}
-                      label={entry[1]}
-                      handleClick={() => voteProposal(id, Number(entry[0]))}
-                    />
-                  ))}
-                </>
-              )}
-            </VoteProposalDetailViewForm>
+            {data?.userVoted ? (
+              <VoteProposalDetailViewSubtitle>You have voted</VoteProposalDetailViewSubtitle>
+            ) : (
+              <>
+                <VoteProposalDetailViewSubtitle>Voting Options</VoteProposalDetailViewSubtitle>
+                <VoteProposalDetailViewForm>
+                  {votingProposal ? (
+                    <Button isLoading={true} key={0} label="Processing..." handleClick={() => {}} />
+                  ) : (
+                    <>
+                      {Object.entries(data?.choices || {}).map((entry) => (
+                        <Button
+                          isLoading={false}
+                          key={entry[1]}
+                          label={entry[1]}
+                          handleClick={() => voteProposal(id, Number(entry[0]))}
+                        />
+                      ))}
+                    </>
+                  )}
+                </VoteProposalDetailViewForm>
+              </>
+            )}
           </>
         )}
       </VoteProposalDetailViewContent>
