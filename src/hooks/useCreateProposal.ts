@@ -16,6 +16,8 @@ const useCreateProposal = () => {
 
     const currentTime = Math.floor(new Date().getTime() / 1000)
     const getTargetAmountString = `[Proposal Target Amount: ${target}]`
+    const ONE_YEAR_IN_SECONDS = 31_536_000
+    const FIVE_MINS_IN_SECONDS = 300
 
     try {
       const proposalStruct = {
@@ -25,7 +27,7 @@ const useCreateProposal = () => {
         body: `${description} - ${getTargetAmountString}`,
         choices: ['Agree to Proposal', 'Disagree to Proposal'],
         start: currentTime,
-        end: currentTime + 31_536_000, // Plus 1 year in seconds
+        end: currentTime + FIVE_MINS_IN_SECONDS,
         snapshot: 136208, // Just fix this snapshot id
         // network: '1',
         plugins: JSON.stringify({}),
