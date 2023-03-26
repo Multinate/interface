@@ -23,13 +23,8 @@ export const NavigationSection = styled.div`
 
 export const NavigationIcon = styled.div`
   position: relative;
-  height: 75px;
-  width: 100px;
-
-  @media screen and (min-width: ${theme.breakpoints.xlarge}) {
-    height: 151.5px;
-    width: 202px;
-  }
+  height: 38px;
+  width: 250px;
 `
 
 export const NavigationOptions = styled.div`
