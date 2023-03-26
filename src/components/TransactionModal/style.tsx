@@ -7,7 +7,9 @@ export const TransactionModalContainer = styled.div`
   background-color: ${theme.colors.backgroundTwo};
   padding: 20px;
   border-radius: 10px;
-  width: 350px;
+  width: 100%;
+
+  max-width: 350px;
 `
 
 export const TransactionModalTitle = styled.h3`
@@ -42,7 +44,7 @@ export const TransactionModalItem = styled.div`
   & p {
     font-family: ${theme.typography.base};
     color: ${theme.colors.text};
-    font-size: 18px;
+    font-size: 12px;
 
     margin: 0 10px;
 
@@ -52,6 +54,10 @@ export const TransactionModalItem = styled.div`
 
     &:last-child {
       margin-right: 0;
+    }
+
+    @media screen and (min-width: ${theme.breakpoints.xlarge}) {
+      font-size: 18px;
     }
   }
 `

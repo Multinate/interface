@@ -78,8 +78,13 @@ export const CampaignDetailViewForm = styled.div`
 `
 
 export const CampaignDetailViewTransactionModal = styled.div`
-  position: absolute;
+  posiiton: relative;
+  width: 100%;
 
-  top: 0;
-  right: 0;
+  @media screen and (min-width: ${theme.breakpoints.xlarge}) {
+    position: absolute;
+
+    top: 0;
+    right: 0;
+  }
 `

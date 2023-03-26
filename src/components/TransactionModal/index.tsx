@@ -27,7 +27,7 @@ const TransactionModal: FC<IProps> = ({ loading, transactions }) => {
           <>
             {transactions.map((transaction) => (
               <TransactionModalItem key={transaction.id}>
-                <p>{getDisplayAddress(transaction.donor, 5, windowDimensions.width < LARGE_SCREEN_SIZE)}</p>
+                <p>{getDisplayAddress(transaction.donor, 5, false)}</p>
                 <p>
                   {transaction.amount} {transaction.coinType}
                 </p>
