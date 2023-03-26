@@ -4,10 +4,12 @@ import CampaignItem from '@/components/CampaignItem'
 import CampaignItemLoader from '@/components/CampaignItem/loader'
 import { useEffect, useState } from 'react'
 import { ICampaign } from '@/utils/interfaces'
+import useGetCampaigns from '@/hooks/useGetCampaigns'
 
 const CampaignView = () => {
   const [campaignList, setCampaignList] = useState<ICampaign[]>([])
   const [loading, setLoading] = useState<boolean>(false)
+  useGetCampaigns()
 
   const fetchCampaigns = async () => {
     // Mock some loading and fetching

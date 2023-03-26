@@ -17,10 +17,11 @@ import DropdownField from '@/components/DropdownField'
 import TransactionModal from '@/components/TransactionModal'
 import Button from '@/components/Button'
 import useWithdraw from '@/hooks/useWithdraw'
-import { useAccount } from 'wagmi'
+import { useAccount, useContractWrite } from 'wagmi'
 import useDonate from '@/hooks/useDonate'
 import { ethers } from 'ethers'
 import { ContractAddressMapping, ContractsEnum } from '@/contracts'
+import { getWagmiContractParams } from '@/utils/ContractsHelper'
 
 interface IProps {
   id: string
@@ -32,22 +33,39 @@ const CampaignDetailView: FC<IProps> = ({ id }) => {
   const [loading, setLoading] = useState<boolean>(true)
   const [selectedCoinOption, setSelectedCoinOption] = useState<IOption>(MockCoinSelection[0])
   const [amount, setAmount] = useState<string>('')
+  const contractParams = getWagmiContractParams(100, ContractsEnum.DONATION)
 
   const {
-    transactionHash: withdrawTxnHash,
-    isWithdrawing,
-    error: errorFromWithdrawing,
-    write: writeWithdraw,
-    reset: resetWithdraw,
-  } = useWithdraw()
-
-  const {
-    transactionHash: donationTxnHash,
-    isDonating,
+    data: donationTxnHash,
+    isLoading: isDonating,
     error: errorFromDonating,
     write: writeDonate,
     reset: resetDonate,
-  } = useDonate()
+  } = useContractWrite({
+    mode: 'recklesslyUnprepared',
+    ...contractParams,
+    functionName: 'donate',
+    chainId: 100,
+    args: [
+      ContractAddressMapping[selectedCoinOption.value][ContractsEnum.ERC20],
+      ethers.utils.parseUnits(amount || '0', 'ether'),
+      Number(campaignData?.id),
+    ],
+  })
+
+  const {
+    data: withdrawTxnHash,
+    isLoading: isWithdrawing,
+    error: errorFromWithdrawing,
+    write: writeWithdraw,
+    reset: resetWithdraw,
+  } = useContractWrite({
+    mode: 'recklesslyUnprepared',
+    ...contractParams,
+    functionName: 'withdraw',
+    chainId: 100,
+    args: [Number(campaignData?.id)],
+  })
 
   const handleSelectCoin = (selected: IOption) => {
     setSelectedCoinOption(selected)
@@ -72,40 +90,6 @@ const CampaignDetailView: FC<IProps> = ({ id }) => {
     setAmount(e)
   }
 
-  const handleWithdraw = async () => {
-    if (writeWithdraw && campaignData) {
-      console.log('Withdraw Params', {
-        campaignid: Number(campaignData.id),
-      })
-
-      writeWithdraw({
-        recklesslySetUnpreparedArgs: [Number(campaignData.id)],
-      })
-    }
-  }
-
-  const handleDonate = async () => {
-    try {
-      if (writeDonate && campaignData) {
-        console.log('Donation Params', {
-          token: ContractAddressMapping[selectedCoinOption.value][ContractsEnum.ERC20],
-          amount: ethers.utils.parseUnits(amount, 'ether'),
-          campaignid: Number(campaignData?.id),
-        })
-
-        writeDonate({
-          recklesslySetUnpreparedArgs: [
-            ContractAddressMapping[selectedCoinOption.value][ContractsEnum.ERC20],
-            ethers.utils.parseUnits(amount, 'ether'),
-            Number(campaignData.id),
-          ],
-        })
-      }
-    } catch (error) {
-      console.log('Donation Error', error)
-    }
-  }
-
   return (
     <CampaignDetailViewContainer>
       <CampaignDetailViewContent>
@@ -124,7 +108,7 @@ const CampaignDetailView: FC<IProps> = ({ id }) => {
           {!loading && (
             <>
               {address && campaignData && address.toLowerCase() === campaignData?.owner.toLowerCase() ? (
-                <Button label="Withdraw" isLoading={isWithdrawing} handleClick={handleWithdraw} />
+                <Button label="Withdraw" isLoading={isWithdrawing} handleClick={writeWithdraw} />
               ) : (
                 <>
                   <TextField label={'Amount'} type="number" handleChange={handleAmount}></TextField>
@@ -134,7 +118,7 @@ const CampaignDetailView: FC<IProps> = ({ id }) => {
                     activeSelection={selectedCoinOption}
                     handleSelection={handleSelectCoin}
                   ></DropdownField>
-                  <Button label={'Donate'} isLoading={false} handleClick={handleDonate}></Button>
+                  <Button label={'Donate'} isLoading={false} handleClick={writeDonate}></Button>
                 </>
               )}
             </>
