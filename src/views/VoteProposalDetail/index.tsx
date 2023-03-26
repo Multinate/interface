@@ -3,6 +3,7 @@ import {
   VoteProposalDetailViewContent,
   VoteProposalDetailViewDescription,
   VoteProposalDetailViewForm,
+  VoteProposalDetailViewSubtitle,
   VoteProposalDetailViewTitle,
 } from './style'
 import { FC, useEffect } from 'react'
@@ -12,6 +13,7 @@ import useFetchPendingProposalById from '@/hooks/useFetchPendingProposalById'
 import useVoteProposal from '@/hooks/useVoteProposal'
 import { toast } from 'react-hot-toast'
 import Router from 'next/router'
+import BarChart from '@/components/BarChart'
 
 interface IProps {
   id: string
@@ -36,30 +38,42 @@ const VoteProposalDetailView: FC<IProps> = ({ id }) => {
           {loading ? <Skeleton count={10} /> : data?.description}
         </VoteProposalDetailViewDescription>
         <VoteProposalDetailViewDescription>
-          {loading ? <Skeleton /> : `Target: $${data?.amount}`}
+          {loading ? <Skeleton /> : <VoteProposalDetailViewSubtitle>Target Amount:</VoteProposalDetailViewSubtitle>}{' '}
+          {data?.amount}
         </VoteProposalDetailViewDescription>
+
         <VoteProposalDetailViewDescription>
-          {loading ? <Skeleton /> : `Yes: ${data?.yes} | No: ${data?.no}`}
+          {loading ? (
+            <Skeleton height={200} />
+          ) : (
+            <>
+              <VoteProposalDetailViewSubtitle>Voting Score</VoteProposalDetailViewSubtitle>
+              <BarChart yes={data?.yes || 0} no={data?.no || 0} />
+            </>
+          )}
         </VoteProposalDetailViewDescription>
         {data?.userVoted ? (
-          <VoteProposalDetailViewDescription>You have voted</VoteProposalDetailViewDescription>
+          <VoteProposalDetailViewSubtitle>You have voted</VoteProposalDetailViewSubtitle>
         ) : (
-          <VoteProposalDetailViewForm>
-            {votingProposal ? (
-              <Button isLoading={true} key={0} label="Processing..." handleClick={() => {}} />
-            ) : (
-              <>
-                {Object.entries(data?.choices || {}).map((entry) => (
-                  <Button
-                    isLoading={false}
-                    key={entry[1]}
-                    label={entry[1]}
-                    handleClick={() => voteProposal(id, Number(entry[0]))}
-                  />
-                ))}
-              </>
-            )}
-          </VoteProposalDetailViewForm>
+          <>
+            <VoteProposalDetailViewSubtitle>Voting Options</VoteProposalDetailViewSubtitle>
+            <VoteProposalDetailViewForm>
+              {votingProposal ? (
+                <Button isLoading={true} key={0} label="Processing..." handleClick={() => {}} />
+              ) : (
+                <>
+                  {Object.entries(data?.choices || {}).map((entry) => (
+                    <Button
+                      isLoading={false}
+                      key={entry[1]}
+                      label={entry[1]}
+                      handleClick={() => voteProposal(id, Number(entry[0]))}
+                    />
+                  ))}
+                </>
+              )}
+            </VoteProposalDetailViewForm>
+          </>
         )}
       </VoteProposalDetailViewContent>
     </VoteProposalDetailViewContainer>

@@ -99,3 +99,19 @@ export const VoteProposalDetailViewTransactionModal = styled.div`
   top: 0;
   right: 0;
 `
+
+export const VoteProposalDetailViewSubtitle = styled.h3`
+  position: relative;
+  width: 100%;
+  font-family: ${theme.typography.base};
+  color: ${theme.colors.title};
+  font-size: 16px;
+
+  margin: 5px 0;
+
+  text-align: left;
+
+  @media screen and (min-width: ${theme.breakpoints.xlarge}) {
+    font-size: 24px;
+  }
+`
