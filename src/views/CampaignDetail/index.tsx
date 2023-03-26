@@ -16,15 +16,20 @@ import TextField from '@/components/TextField'
 import DropdownField from '@/components/DropdownField'
 import TransactionModal from '@/components/TransactionModal'
 import Button from '@/components/Button'
+import useWithdraw from '@/hooks/useWithdraw'
+import { useAccount } from 'wagmi'
 
 interface IProps {
   id: string
 }
 
 const CampaignDetailView: FC<IProps> = ({ id }) => {
+  const { address } = useAccount()
   const [campaignData, setCampaignData] = useState<ICampaign>()
   const [loading, setLoading] = useState<boolean>(true)
   const [selectedCoinOption, setSelectedCoinOption] = useState<IOption>(MockCoinSelection[0])
+
+  const { transactionHash, isWithdrawing, error: errorFromWithdrawing, write, reset } = useWithdraw()
 
   const handleSelectCoin = (selected: IOption) => {
     setSelectedCoinOption(selected)
@@ -45,6 +50,16 @@ const CampaignDetailView: FC<IProps> = ({ id }) => {
     }
   }, [id])
 
+  const handleWithdraw = async () => {
+    if (write && campaignData) {
+      write({
+        recklesslySetUnpreparedArgs: [campaignData.id],
+      })
+    }
+  }
+
+  const handleDonate = async () => {}
+
   return (
     <CampaignDetailViewContainer>
       <CampaignDetailViewContent>
@@ -62,14 +77,20 @@ const CampaignDetailView: FC<IProps> = ({ id }) => {
         <CampaignDetailViewForm>
           {!loading && (
             <>
-              <TextField label={'Amount'} type="number" handleChange={() => {}}></TextField>
-              <DropdownField
-                label={'Coin'}
-                options={MockCoinSelection}
-                activeSelection={selectedCoinOption}
-                handleSelection={handleSelectCoin}
-              ></DropdownField>
-              <Button label={'Donate'} isLoading={false} handleClick={() => {}}></Button>
+              {address && campaignData && address.toLowerCase() === campaignData?.owner.toLowerCase() ? (
+                <Button label="Withdraw" isLoading={isWithdrawing} handleClick={handleWithdraw} />
+              ) : (
+                <>
+                  <TextField label={'Amount'} type="number" handleChange={() => {}}></TextField>
+                  <DropdownField
+                    label={'Coin'}
+                    options={MockCoinSelection}
+                    activeSelection={selectedCoinOption}
+                    handleSelection={handleSelectCoin}
+                  ></DropdownField>
+                  <Button label={'Donate'} isLoading={false} handleClick={handleDonate}></Button>
+                </>
+              )}
             </>
           )}
         </CampaignDetailViewForm>

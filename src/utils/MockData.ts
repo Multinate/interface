@@ -9,6 +9,7 @@ export const MockCampaignData: ICampaign[] = [
     href: '1',
     raised: 69,
     target: 100,
+    owner: '0xDcb0499ddc3Cd842d136Df23D489A84d5cedFa9e',
   },
   {
     id: '2',
@@ -18,6 +19,7 @@ export const MockCampaignData: ICampaign[] = [
     href: '2',
     raised: 10023,
     target: 123123,
+    owner: '0xDcb0499ddc3Cd842d136Df23D489A84d5cedFa9e',
   },
   {
     id: '3',
@@ -27,6 +29,7 @@ export const MockCampaignData: ICampaign[] = [
     href: '3',
     raised: 645,
     target: 34342,
+    owner: '0xDcb0499ddc3Cd842d136Df23D489A84d5cedFa9e',
   },
   {
     id: '4',
@@ -36,6 +39,7 @@ export const MockCampaignData: ICampaign[] = [
     href: '4',
     raised: 10023,
     target: 5000,
+    owner: '0xDcb0499ddc3Cd842d136Df23D489A84d5cedFa9e',
   },
   {
     id: '5',
@@ -45,6 +49,7 @@ export const MockCampaignData: ICampaign[] = [
     href: '5',
     raised: 32434,
     target: 232322,
+    owner: '0xDcb0499ddc3Cd842d136Df23D489A84d5cedFa9e',
   },
   {
     id: '6',
@@ -54,6 +59,7 @@ export const MockCampaignData: ICampaign[] = [
     href: '6',
     raised: 0,
     target: 123123,
+    owner: '0xDcb0499ddc3Cd842d136Df23D489A84d5cedFa9e',
   },
   {
     id: '7',
@@ -63,6 +69,7 @@ export const MockCampaignData: ICampaign[] = [
     href: '7',
     raised: 10023,
     target: 12000,
+    owner: '0xDcb0499ddc3Cd842d136Df23D489A84d5cedFa9e',
   },
 ]
 

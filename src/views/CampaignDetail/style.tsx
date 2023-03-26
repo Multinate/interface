@@ -83,6 +83,7 @@ export const CampaignDetailViewTransactionModal = styled.div`
 
   @media screen and (min-width: ${theme.breakpoints.xlarge}) {
     position: absolute;
+    width: auto;
 
     top: 0;
     right: 0;

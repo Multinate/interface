@@ -12,6 +12,7 @@ export interface ICampaign {
   href: string
   raised: number
   target: number
+  owner: string
 }
 
 export interface ITransaction {
