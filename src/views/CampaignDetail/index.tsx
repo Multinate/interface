@@ -16,18 +16,19 @@ import TextField from '@/components/TextField'
 import DropdownField from '@/components/DropdownField'
 import TransactionModal from '@/components/TransactionModal'
 import Button from '@/components/Button'
-import useWithdraw from '@/hooks/useWithdraw'
 import { useAccount, useContractWrite } from 'wagmi'
-import useDonate from '@/hooks/useDonate'
 import { ethers } from 'ethers'
 import { ContractAddressMapping, ContractsEnum } from '@/contracts'
 import { getWagmiContractParams } from '@/utils/ContractsHelper'
+import { useRouter } from 'next/router'
+import { toast } from 'react-hot-toast'
 
 interface IProps {
   id: string
 }
 
 const CampaignDetailView: FC<IProps> = ({ id }) => {
+  const router = useRouter()
   const { address } = useAccount()
   const [campaignData, setCampaignData] = useState<ICampaign>()
   const [loading, setLoading] = useState<boolean>(true)
@@ -90,6 +91,16 @@ const CampaignDetailView: FC<IProps> = ({ id }) => {
     setAmount(e)
   }
 
+  useEffect(() => {
+    if (donationTxnHash && !errorFromDonating) {
+      toast.success('You have donated')
+      router.push('/campaigns')
+    } else if (withdrawTxnHash && !errorFromWithdrawing) {
+      toast.success('You have withdrawn')
+      router.push('/campaigns')
+    }
+  }, [donationTxnHash, withdrawTxnHash])
+
   return (
     <CampaignDetailViewContainer>
       <CampaignDetailViewContent>
@@ -118,7 +129,7 @@ const CampaignDetailView: FC<IProps> = ({ id }) => {
                     activeSelection={selectedCoinOption}
                     handleSelection={handleSelectCoin}
                   ></DropdownField>
-                  <Button label={'Donate'} isLoading={false} handleClick={writeDonate}></Button>
+                  <Button label={'Donate'} isLoading={isDonating} handleClick={writeDonate}></Button>
                 </>
               )}
             </>
