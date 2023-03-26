@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import snapshot from '@snapshot-labs/snapshot.js'
 
-const hub = 'https://hub.snapshot.org'
+const mainHub = 'https://hub.snapshot.org'
 const testnetHub = 'https://testnet.snapshot.org'
 
 const useInitSnapshot = () => {
@@ -9,7 +9,7 @@ const useInitSnapshot = () => {
 
   useEffect(() => {
     if (!client) {
-      setClient(new snapshot.Client712(testnetHub))
+      setClient(new snapshot.Client712(mainHub))
     }
   }, [])
 

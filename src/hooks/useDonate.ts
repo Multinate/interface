@@ -4,26 +4,26 @@ import { useContractWrite } from 'wagmi'
 import { ContractsEnum } from '@/contracts'
 
 /*
-  To initialize a withdraw
+  To initialize a donation
 */
-const useWithdraw = () => {
-  const contractParams = getWagmiContractParams(100, ContractsEnum.MULTINATE)
+const useDonate = () => {
+  const contractParams = getWagmiContractParams(100, ContractsEnum.DONATION)
 
   const [transactionHash, setTransactionHash] = useState<string>('')
-  const [isWithdrawing, setIsWithdrawing] = useState<boolean>(false)
+  const [isDonating, setIsDonating] = useState<boolean>(false)
 
   const { data, isLoading, error, write, reset } = useContractWrite({
     mode: 'recklesslyUnprepared',
     ...contractParams,
-    functionName: 'withdraw',
-    chainId: 137, // TODO: May need to change
+    functionName: 'donate',
+    chainId: 100,
   })
 
   const processTransaction = async () => {
     if (data) {
       const txnReceipt = await data.wait()
       setTransactionHash(txnReceipt.transactionHash)
-      setIsWithdrawing(false)
+      setIsDonating(false)
     }
   }
 
@@ -37,17 +37,17 @@ const useWithdraw = () => {
 
   useEffect(() => {
     if (isLoading) {
-      setIsWithdrawing(true)
+      setIsDonating(true)
     } else {
       if (transactionHash) {
-        setIsWithdrawing(false)
+        setIsDonating(false)
       } else if (error) {
-        setIsWithdrawing(false)
+        setIsDonating(false)
       }
     }
   }, [isLoading])
 
-  return { transactionHash, isWithdrawing, error, write, reset }
+  return { transactionHash, isDonating, error, write, reset }
 }
 
-export default useWithdraw
+export default useDonate

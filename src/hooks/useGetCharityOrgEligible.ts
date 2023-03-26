@@ -8,7 +8,7 @@ import { ContractsEnum } from '@/contracts'
 */
 const useGetCharityOrgEligible = (address: string) => {
   const [data, setData] = useState<boolean>(false)
-  const contractParams = getWagmiContractParams(ContractsEnum.MAIN)
+  const contractParams = getWagmiContractParams(100, ContractsEnum.MULTINATE)
 
   const {
     data: rawData,

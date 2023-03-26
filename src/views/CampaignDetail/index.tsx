@@ -18,6 +18,9 @@ import TransactionModal from '@/components/TransactionModal'
 import Button from '@/components/Button'
 import useWithdraw from '@/hooks/useWithdraw'
 import { useAccount } from 'wagmi'
+import useDonate from '@/hooks/useDonate'
+import { ethers } from 'ethers'
+import { ContractAddressMapping, ContractsEnum } from '@/contracts'
 
 interface IProps {
   id: string
@@ -28,8 +31,23 @@ const CampaignDetailView: FC<IProps> = ({ id }) => {
   const [campaignData, setCampaignData] = useState<ICampaign>()
   const [loading, setLoading] = useState<boolean>(true)
   const [selectedCoinOption, setSelectedCoinOption] = useState<IOption>(MockCoinSelection[0])
+  const [amount, setAmount] = useState<string>('')
 
-  const { transactionHash, isWithdrawing, error: errorFromWithdrawing, write, reset } = useWithdraw()
+  const {
+    transactionHash: withdrawTxnHash,
+    isWithdrawing,
+    error: errorFromWithdrawing,
+    write: writeWithdraw,
+    reset: resetWithdraw,
+  } = useWithdraw()
+
+  const {
+    transactionHash: donationTxnHash,
+    isDonating,
+    error: errorFromDonating,
+    write: writeDonate,
+    reset: resetDonate,
+  } = useDonate()
 
   const handleSelectCoin = (selected: IOption) => {
     setSelectedCoinOption(selected)
@@ -50,15 +68,43 @@ const CampaignDetailView: FC<IProps> = ({ id }) => {
     }
   }, [id])
 
+  const handleAmount = (e: string) => {
+    setAmount(e)
+  }
+
   const handleWithdraw = async () => {
-    if (write && campaignData) {
-      write({
-        recklesslySetUnpreparedArgs: [campaignData.id],
+    if (writeWithdraw && campaignData) {
+      console.log('Withdraw Params', {
+        campaignid: Number(campaignData.id),
+      })
+
+      writeWithdraw({
+        recklesslySetUnpreparedArgs: [Number(campaignData.id)],
       })
     }
   }
 
-  const handleDonate = async () => {}
+  const handleDonate = async () => {
+    try {
+      if (writeDonate && campaignData) {
+        console.log('Donation Params', {
+          token: ContractAddressMapping[selectedCoinOption.value][ContractsEnum.ERC20],
+          amount: ethers.utils.parseUnits(amount, 'ether'),
+          campaignid: Number(campaignData?.id),
+        })
+
+        writeDonate({
+          recklesslySetUnpreparedArgs: [
+            ContractAddressMapping[selectedCoinOption.value][ContractsEnum.ERC20],
+            ethers.utils.parseUnits(amount, 'ether'),
+            Number(campaignData.id),
+          ],
+        })
+      }
+    } catch (error) {
+      console.log('Donation Error', error)
+    }
+  }
 
   return (
     <CampaignDetailViewContainer>
@@ -81,7 +127,7 @@ const CampaignDetailView: FC<IProps> = ({ id }) => {
                 <Button label="Withdraw" isLoading={isWithdrawing} handleClick={handleWithdraw} />
               ) : (
                 <>
-                  <TextField label={'Amount'} type="number" handleChange={() => {}}></TextField>
+                  <TextField label={'Amount'} type="number" handleChange={handleAmount}></TextField>
                   <DropdownField
                     label={'Coin'}
                     options={MockCoinSelection}

@@ -27,7 +27,7 @@ export interface ITransaction {
 
 export interface IOption {
   label: string
-  value: string
+  value: number
 }
 
 export interface IPendingProposal {

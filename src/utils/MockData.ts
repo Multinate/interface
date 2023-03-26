@@ -123,19 +123,19 @@ export const MockTransactionsData: ITransaction[] = [
 
 export const MockCoinSelection: IOption[] = [
   {
-    label: 'ETH',
-    value: 'ETH',
+    label: 'Generic ERC20',
+    value: 100,
   },
   {
     label: 'CRO',
-    value: 'CRO',
+    value: 25,
   },
   {
-    label: 'BTC',
-    value: 'BTC',
+    label: 'ETH',
+    value: 1,
   },
   {
-    label: 'ARB',
-    value: 'ARB',
+    label: 'BNB',
+    value: 56,
   },
 ]

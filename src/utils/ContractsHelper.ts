@@ -1,25 +1,18 @@
-import { ContractsEnum, ContractsMapping } from '@/contracts'
-import { ethers } from 'ethers'
-import config from './Config'
+import { ContractAddressMapping, ContractsEnum, ContractsMapping } from '@/contracts'
 
-export const getWagmiContractParams = (contractName: ContractsEnum) => {
-  if (!config.contract_address)
-    return {
-      addressOrName: config.contract_address,
-      contractInterface: [],
-    }
-
+export const getWagmiContractParams = (chain: number, contractName: ContractsEnum) => {
   try {
+    const contractAddress = ContractAddressMapping[chain][contractName]
     const contract = require(`../contracts/${ContractsMapping[contractName]}.json`)
 
     return {
-      addressOrName: config.contract_address,
+      addressOrName: contractAddress,
       contractInterface: contract.abi,
     }
   } catch (error) {
     console.log('[Wagmi] Contract does not exist!')
     return {
-      addressOrName: config.contract_address,
+      addressOrName: '',
       contractInterface: [],
     }
   }
