@@ -9,8 +9,10 @@ import {
   CreateCampaignViewDescription,
   CreateCampaignViewTitle,
 } from './style'
+import { useRouter } from 'next/router'
 
 const CreateCampaignView = () => {
+  const router = useRouter()
   const [title, setTitle] = useState<string>('')
   const [description, setDescription] = useState<string>('')
   const [amount, setAmount] = useState<string>('')
@@ -33,6 +35,7 @@ const CreateCampaignView = () => {
       setAmount('')
 
       toast.success(`Proposal has been successfully created! Proposal ID: ${creationProposalResponse}`)
+      router.push('/vote')
     }
   }, [creationProposalResponse, isCreatingProposal])
 
