@@ -22,7 +22,7 @@ const useGetCharityOrgEligible = (address: string) => {
 
   useEffect(() => {
     if (rawData) {
-      setData(rawData as boolean)
+      setData(false)
     }
   }, [rawData])
 
