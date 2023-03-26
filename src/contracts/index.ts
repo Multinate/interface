@@ -7,11 +7,11 @@ export enum ContractsEnum {
 }
 
 export const ContractsMapping: { [key: string]: string } = {
-  [ContractsEnum.ATTESTATION]: 'attestation',
-  [ContractsEnum.MAIN]: 'multinate',
-  [ContractsEnum.ERC20]: 'erc20',
-  [ContractsEnum.USDC]: 'usdc',
-  [ContractsEnum.WETH]: 'weth',
+  [ContractsEnum.ATTESTATION]: 'AttestationStation',
+  [ContractsEnum.MAIN]: 'Multinate',
+  [ContractsEnum.ERC20]: 'MockERC20',
+  [ContractsEnum.USDC]: 'MockUSDC',
+  [ContractsEnum.WETH]: 'MockWETH',
 }
 
 export const ContractAddressMapping: { [network: number]: { [contractType: string]: string } } = {

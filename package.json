@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "export": "next export"
+    "export": "next export",
+    "typechain": "typechain --out-dir src/contracts/abi/types --target=ethers-v5 \"src/contracts/*.json\""
   },
   "dependencies": {
     "@rainbow-me/rainbowkit": "^0.12.1",
@@ -31,8 +32,10 @@
     "wagmi": "^0.12.1"
   },
   "devDependencies": {
+    "@typechain/ethers-v5": "^10.2.0",
     "@types/styled-components": "^5.1.26",
     "eslint-config-prettier": "^8.8.0",
-    "prettier": "^2.8.6"
+    "prettier": "^2.8.6",
+    "typechain": "^8.1.1"
   }
 }
