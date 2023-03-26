@@ -15,8 +15,6 @@ interface IProps {
 }
 
 const TransactionModal: FC<IProps> = ({ loading, transactions }) => {
-  const { windowDimensions, LARGE_SCREEN_SIZE } = useWindowDimensions()
-
   return (
     <TransactionModalContainer>
       <TransactionModalTitle>Activity</TransactionModalTitle>
