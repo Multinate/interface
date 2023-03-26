@@ -1,7 +1,7 @@
-import useWindowDimensions from '@/hooks/useWindowDImensions'
 import { getDisplayAddress, getTimeFormat } from '@/utils/helper'
 import { ITransaction } from '@/utils/interfaces'
 import { FC } from 'react'
+import Skeleton from 'react-loading-skeleton'
 import {
   TransactionModalContainer,
   TransactionModalContent,
@@ -20,7 +20,11 @@ const TransactionModal: FC<IProps> = ({ loading, transactions }) => {
       <TransactionModalTitle>Activity</TransactionModalTitle>
       <TransactionModalContent>
         {loading ? (
-          <></>
+          <>
+            {new Array(5).fill(0).map((item, index: number) => (
+              <Skeleton key={index} />
+            ))}
+          </>
         ) : (
           <>
             {transactions.map((transaction) => (
