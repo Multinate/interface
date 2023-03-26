@@ -11,7 +11,7 @@ export const DropdownFieldContainer = styled.div`
   cursor: pointer;
 
   @media screen and (min-width: ${theme.breakpoints.xlarge}) {
-    width: 200px;
+    width: 400px;
   }
 `
 
