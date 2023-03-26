@@ -1,7 +1,8 @@
+import { ContractsEnum, ContractsMapping } from '@/contracts'
 import { ethers } from 'ethers'
 import config from './Config'
 
-export const getWagmiContractParams = (contractName: string) => {
+export const getWagmiContractParams = (contractName: ContractsEnum) => {
   if (!config.contract_address)
     return {
       addressOrName: config.contract_address,
@@ -9,8 +10,7 @@ export const getWagmiContractParams = (contractName: string) => {
     }
 
   try {
-    // const contract = require(`../contracts/${chain}/${envConfig.CONTRACT_NAME}.json`);
-    const contract = require(`../contracts/mainnet/${contractName}.json`)
+    const contract = require(`../contracts/${ContractsMapping[contractName]}.json`)
 
     return {
       addressOrName: config.contract_address,

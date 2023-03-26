@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react'
 import { getWagmiContractParams } from '../utils/ContractsHelper'
 import { useContractRead } from 'wagmi'
+import { ContractsEnum } from '@/contracts'
 
 const useGetAttestation = () => {
   const [data, setData] = useState<boolean>(false)
-  const contractParams = getWagmiContractParams('attestation')
+  const contractParams = getWagmiContractParams(ContractsEnum.ATTESTATION)
 
   const {
     data: rawData,
