@@ -3,9 +3,12 @@ import { getWagmiContractParams } from '../utils/ContractsHelper'
 import { useContractRead } from 'wagmi'
 import { ContractsEnum } from '@/contracts'
 
-const useGetAttestation = () => {
+/*
+  To check whether is a Charity (Creator's Address) has been attested and verified to be legitimate
+*/
+const useGetCharityOrgEligible = (address: string) => {
   const [data, setData] = useState<boolean>(false)
-  const contractParams = getWagmiContractParams(ContractsEnum.ATTESTATION)
+  const contractParams = getWagmiContractParams(ContractsEnum.MAIN)
 
   const {
     data: rawData,
@@ -13,7 +16,8 @@ const useGetAttestation = () => {
     isLoading,
   } = useContractRead({
     ...contractParams,
-    functionName: 'totalSupply',
+    functionName: 'isCharityEligible',
+    args: [address],
   })
 
   useEffect(() => {
@@ -25,4 +29,4 @@ const useGetAttestation = () => {
   return { data, isLoading, isError }
 }
 
-export default useGetAttestation
+export default useGetCharityOrgEligible
