@@ -1,5 +1,5 @@
 import theme from '@/styles/theme'
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
 
 export const ButtonContainer = styled.button`
   background-color: ${theme.colors.title};
@@ -18,4 +18,21 @@ export const ButtonContainer = styled.button`
     opacity: 0.7;
     cursor: not-allowed;
   }
+`
+
+const spin = () => keyframes`
+  0% {
+    transform: rotate(360deg);
+  }
+
+  100% {
+    transform: rotate(0deg);
+  }
+`
+
+export const ButtonSpinner = styled.div`
+  position: relative;
+  height: 22px;
+  width: 22px;
+  animation: ${spin()} 1s infinite;
 `

@@ -1,5 +1,7 @@
+import Image from 'next/image'
 import { FC } from 'react'
-import { ButtonContainer } from './style'
+import { ButtonContainer, ButtonSpinner } from './style'
+import LoaderIcon from '@/assets/images/icons/Loader.svg'
 
 interface IProps {
   label: string
@@ -19,7 +21,13 @@ const Button: FC<IProps> = ({ label, handleClick, isLoading }) => {
         }
       }}
     >
-      {isLoading ? <p>Processing...</p> : <p>{label}</p>}
+      {isLoading ? (
+        <ButtonSpinner>
+          <Image src={LoaderIcon} alt="Loader" fill />
+        </ButtonSpinner>
+      ) : (
+        <p>{label}</p>
+      )}
     </ButtonContainer>
   )
 }
